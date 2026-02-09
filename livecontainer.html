@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LiveContainer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg: #000000;
+    --border: #262626;
+    --text: #ffffff;
+    --subtle: #8e8e93;
+    --accent: #0a84ff;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  /* Top bar */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 52px;
+    background: #050505;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--border);
+    z-index: 10;
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .nav-title {
+    pointer-events: none;
+  }
+
+  .nav-plus {
+    position: absolute;
+    right: 14px;
+    font-size: 24px;
+    color: var(--accent);
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  .nav-plus:active {
+    opacity: 0.5;
+  }
+
+  /* Main layout */
+  .app {
+    padding-top: 52px;
+    padding-bottom: 20px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    font-size: 13px;
+    color: var(--subtle);
+    padding: 14px 14px 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="nav-title">LiveContainer</div>
+  <div class="nav-plus">+</div>
+</div>
+
+<div class="app">
+
+  <div class="section-header">APPS</div>
+
+  <!-- NOTHING HERE. No box. No card. No placeholder. -->
+
+</div>
+
+</body>
+</html>
