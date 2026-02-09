@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>StikDebug</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg: #000;
+    --card: #111;
+    --row: #181818;
+    --row-alt: #141414;
+    --border: #262626;
+    --text: #fff;
+    --subtle: #8e8e93;
+    --accent: #0a84ff;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  /* Top bar */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 52px;
+    background: #050505;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--border);
+    z-index: 10;
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  /* Main layout */
+  .app {
+    padding-top: 52px;
+    padding-bottom: 60px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* Home screen */
+  .home-title {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .home-sub {
+    text-align: center;
+    margin-top: 6px;
+    font-size: 14px;
+    color: var(--subtle);
+  }
+
+  .btn {
+    width: calc(100% - 40px);
+    margin: 16px auto;
+    padding: 14px;
+    background: var(--accent);
+    border-radius: 12px;
+    text-align: center;
+    font-size: 17px;
+    cursor: pointer;
+  }
+
+  .btn:active {
+    opacity: 0.6;
+  }
+
+  /* Settings */
+  .section-header {
+    font-size: 13px;
+    color: var(--subtle);
+    padding: 14px 14px 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+
+  .card {
+    margin: 0 10px 12px;
+    background: var(--card);
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .row {
+    padding: 12px 14px;
+    background: var(--row);
+    border-top: 1px solid var(--border);
+    cursor: pointer;
+  }
+
+  .row:nth-child(1) {
+    border-top: none;
+  }
+
+  .row:nth-child(even) {
+    background: var(--row-alt);
+  }
+
+  .row:active {
+    opacity: 0.5;
+  }
+
+  .row-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .toggle {
+    width: 46px;
+    height: 26px;
+    border-radius: 999px;
+    background: #3a3a3c;
+    position: relative;
+  }
+
+  .toggle::before {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #fff;
+    top: 2px;
+    left: 2px;
+  }
+
+  /* Tab bar */
+  .tabbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 56px;
+    background: #050505;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 11px;
+  }
+
+  .tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--subtle);
+    cursor: pointer;
+  }
+
+  .tab-active {
+    color: var(--accent);
+  }
+</style>
+</head>
+<body>
+
+<div class="nav">StikDebug</div>
+
+<!-- HOME SCREEN -->
+<div class="app" id="screen-home">
+  <div class="home-title">Welcome to StikDebug User!</div>
+  <div class="home-sub">Click connect to get started</div>
+
+  <div class="btn">Connect</div>
+  <div class="btn">Open Console</div>
+</div>
+
+<!-- SETTINGS SCREEN -->
+<div class="app" id="screen-settings" style="display:none;">
+
+  <div class="section-header">APPLICATION</div>
+  <div class="card">
+    <div class="row">
+      <div class="row-main">
+        <div>StikDebug</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">APPEARANCE</div>
+  <div class="card">
+    <div class="row">
+      <div class="row-main">
+        <div>Display</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">PAIRING FILE</div>
+  <div class="card">
+    <div class="row">
+      <div class="row-main">
+        <div>Import New Pairing File</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">BEHAVIOR</div>
+  <div class="card">
+    <div class="row">
+      <div class="row-main">
+        <div>Run Default Script After Connecting</div>
+        <div class="toggle"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row-main">
+        <div>Picture in Picture</div>
+        <div class="toggle"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- TAB BAR -->
+<div class="tabbar">
+  <div class="tab tab-active" onclick="showScreen('home')">
+    <span>Home</span>
+  </div>
+  <div class="tab" onclick="showScreen('settings')">
+    <span>Settings</span>
+  </div>
+</div>
+
+<script>
+  function showScreen(which) {
+    const home = document.getElementById('screen-home');
+    const settings = document.getElementById('screen-settings');
+    const tabs = document.querySelectorAll('.tab');
+
+    tabs.forEach(t => t.classList.remove('tab-active'));
+
+    if (which === 'home') {
+      home.style.display = 'block';
+      settings.style.display = 'none';
+      tabs[0].classList.add('tab-active');
+    } else {
+      home.style.display = 'none';
+      settings.style.display = 'block';
+      tabs[1].classList.add('tab-active');
+    }
+  }
+</script>
+
+</body>
+</html>
