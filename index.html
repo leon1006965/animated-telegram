@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Leon's iOS Mods</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #000000;
+      --card-bg: #1c1c1e;
+      --tint: #0a84ff;
+      --text: #ffffff;
+      --subtle-text: #8e8e93;
+      --border: #3a3a3c;
+      --radius: 12px;
+      --nav-height: 56px;
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        system-ui, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .app {
+      min-height: 100vh;
+      padding-top: calc(var(--nav-height) + var(--safe-top));
+      padding-bottom: var(--safe-bottom);
+    }
+
+    /* Navigation bar */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: calc(var(--nav-height) + var(--safe-top));
+      padding-top: var(--safe-top);
+      background: rgba(28, 28, 30, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .nav-inner {
+      height: var(--nav-height);
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 12px;
+      position: relative;
+    }
+
+    .nav-title {
+      font-weight: 600;
+      font-size: 17px;
+    }
+
+    /* Card / list */
+    .card {
+      max-width: 480px;
+      margin: 12px auto;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.05);
+    }
+
+    .card-header {
+      padding: 10px 16px 4px;
+      font-size: 13px;
+      color: var(--subtle-text);
+    }
+
+    .list-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      font-size: 17px;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .list-item:first-of-type {
+      border-top: none;
+    }
+
+    .install-btn {
+      background: var(--tint);
+      color: #fff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .install-btn:active {
+      opacity: 0.7;
+    }
+
+    .credit {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 13px;
+      color: var(--subtle-text);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="nav-title">Leon's iOS Mods</div>
+    </div>
+  </div>
+
+  <div class="app">
+
+    <div class="card">
+      <div class="card-header">AVAILABLE MOD TOOLS</div>
+
+      <div class="list-item">
+        LiveContainer
+        <button class="install-btn" onclick="window.open('https://example.com/livecontainer', '_blank')">Install</button>
+      </div>
+
+      <div class="list-item">
+        StikDebug
+        <button class="install-btn" onclick="window.open('https://example.com/stikdebug', '_blank')">Install</button>
+      </div>
+
+      <div class="list-item">
+        LocalDevVPN
+        <button class="install-btn" onclick="window.open('https://example.com/localdevvpn', '_blank')">Install</button>
+      </div>
+
+      <div class="list-item">
+        Misaka26
+        <button class="install-btn" onclick="window.open('https://example.com/misaka26', '_blank')">Install</button>
+      </div>
+
+      <div class="list-item">
+        PrismLite
+        <button class="install-btn" onclick="window.open('https://example.com/prismlite', '_blank')">Install</button>
+      </div>
+
+      <div class="list-item">
+        roothide Bootstrap
+        <button class="install-btn" onclick="window.open('https://example.com/roothide', '_blank')">Install</button>
+      </div>
+
+    </div>
+
+    <div class="credit">This app is made by Leon Evner.</div>
+
+  </div>
+
+</body>
+</html>
